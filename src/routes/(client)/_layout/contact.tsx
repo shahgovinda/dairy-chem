@@ -23,7 +23,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
-export const Route = createFileRoute('/contact')({
+export const Route = createFileRoute('/(client)/_layout/contact')({
   component: Contact,
 })
 

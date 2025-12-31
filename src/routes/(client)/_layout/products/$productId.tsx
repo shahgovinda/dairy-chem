@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { createFileRoute } from '@tanstack/react-router'
 import { Mail } from 'lucide-react'
 
-export const Route = createFileRoute('/products/$productId')({
+export const Route = createFileRoute('/(client)/_layout/products/$productId')({
     component: ProductDetailPage,
 })
 

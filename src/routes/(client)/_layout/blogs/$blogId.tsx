@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { BLOG_POSTS } from './index'
 import { CalendarRange } from 'lucide-react'
 
-export const Route = createFileRoute('/blogs/$blogId')({
+export const Route = createFileRoute('/(client)/_layout/blogs/$blogId')({
   component: BlogPage,
 })
 

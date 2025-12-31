@@ -12,7 +12,7 @@ function RootComponent() {
 
   return (
     <>
-      {!isAdmin && <Navbar />}
+      {/* {!isAdmin && <Navbar />} */}
       <Outlet />
       <TanStackRouterDevtools />
     </>
