@@ -9,11 +9,11 @@ function Layout() {
   return (
     <SidebarProvider defaultOpen>
       <AppSidebar />
-      <main>
+      <main className='relative w-full'>
+        <div className='absolute inset-0 bg-[url("/logo.jpeg")] bg-center bg-no-repeat bg-fixed opacity-10 -z-10' />
         <SidebarTrigger className='' />
         <Outlet />
       </main>
     </SidebarProvider>
   )
 }
-

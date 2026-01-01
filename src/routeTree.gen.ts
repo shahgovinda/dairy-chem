@@ -19,6 +19,7 @@ import { Route as AdminAdminSettingsIndexRouteImport } from './routes/admin/_adm
 import { Route as AdminAdminProductsIndexRouteImport } from './routes/admin/_admin/products/index'
 import { Route as clientLayoutProductsIndexRouteImport } from './routes/(client)/_layout/products/index'
 import { Route as clientLayoutBlogsIndexRouteImport } from './routes/(client)/_layout/blogs/index'
+import { Route as AdminAdminProductsProductIdRouteImport } from './routes/admin/_admin/products/$productId'
 import { Route as clientLayoutProductsProductIdRouteImport } from './routes/(client)/_layout/products/$productId'
 import { Route as clientLayoutBlogsBlogIdRouteImport } from './routes/(client)/_layout/blogs/$blogId'
 
@@ -72,6 +73,12 @@ const clientLayoutBlogsIndexRoute = clientLayoutBlogsIndexRouteImport.update({
   path: '/blogs/',
   getParentRoute: () => clientLayoutRoute,
 } as any)
+const AdminAdminProductsProductIdRoute =
+  AdminAdminProductsProductIdRouteImport.update({
+    id: '/products/$productId',
+    path: '/products/$productId',
+    getParentRoute: () => AdminAdminRoute,
+  } as any)
 const clientLayoutProductsProductIdRoute =
   clientLayoutProductsProductIdRouteImport.update({
     id: '/products/$productId',
@@ -92,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminAdminIndexRoute
   '/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
   '/products/$productId': typeof clientLayoutProductsProductIdRoute
+  '/admin/products/$productId': typeof AdminAdminProductsProductIdRoute
   '/blogs': typeof clientLayoutBlogsIndexRoute
   '/products': typeof clientLayoutProductsIndexRoute
   '/admin/products': typeof AdminAdminProductsIndexRoute
@@ -104,6 +112,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminAdminIndexRoute
   '/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
   '/products/$productId': typeof clientLayoutProductsProductIdRoute
+  '/admin/products/$productId': typeof AdminAdminProductsProductIdRoute
   '/blogs': typeof clientLayoutBlogsIndexRoute
   '/products': typeof clientLayoutProductsIndexRoute
   '/admin/products': typeof AdminAdminProductsIndexRoute
@@ -119,6 +128,7 @@ export interface FileRoutesById {
   '/admin/_admin/': typeof AdminAdminIndexRoute
   '/(client)/_layout/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
   '/(client)/_layout/products/$productId': typeof clientLayoutProductsProductIdRoute
+  '/admin/_admin/products/$productId': typeof AdminAdminProductsProductIdRoute
   '/(client)/_layout/blogs/': typeof clientLayoutBlogsIndexRoute
   '/(client)/_layout/products/': typeof clientLayoutProductsIndexRoute
   '/admin/_admin/products/': typeof AdminAdminProductsIndexRoute
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/blogs/$blogId'
     | '/products/$productId'
+    | '/admin/products/$productId'
     | '/blogs'
     | '/products'
     | '/admin/products'
@@ -146,6 +157,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/blogs/$blogId'
     | '/products/$productId'
+    | '/admin/products/$productId'
     | '/blogs'
     | '/products'
     | '/admin/products'
@@ -160,6 +172,7 @@ export interface FileRouteTypes {
     | '/admin/_admin/'
     | '/(client)/_layout/blogs/$blogId'
     | '/(client)/_layout/products/$productId'
+    | '/admin/_admin/products/$productId'
     | '/(client)/_layout/blogs/'
     | '/(client)/_layout/products/'
     | '/admin/_admin/products/'
@@ -243,6 +256,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof clientLayoutBlogsIndexRouteImport
       parentRoute: typeof clientLayoutRoute
     }
+    '/admin/_admin/products/$productId': {
+      id: '/admin/_admin/products/$productId'
+      path: '/products/$productId'
+      fullPath: '/admin/products/$productId'
+      preLoaderRoute: typeof AdminAdminProductsProductIdRouteImport
+      parentRoute: typeof AdminAdminRoute
+    }
     '/(client)/_layout/products/$productId': {
       id: '/(client)/_layout/products/$productId'
       path: '/products/$productId'
@@ -286,12 +306,14 @@ const clientLayoutRouteWithChildren = clientLayoutRoute._addFileChildren(
 
 interface AdminAdminRouteChildren {
   AdminAdminIndexRoute: typeof AdminAdminIndexRoute
+  AdminAdminProductsProductIdRoute: typeof AdminAdminProductsProductIdRoute
   AdminAdminProductsIndexRoute: typeof AdminAdminProductsIndexRoute
   AdminAdminSettingsIndexRoute: typeof AdminAdminSettingsIndexRoute
 }
 
 const AdminAdminRouteChildren: AdminAdminRouteChildren = {
   AdminAdminIndexRoute: AdminAdminIndexRoute,
+  AdminAdminProductsProductIdRoute: AdminAdminProductsProductIdRoute,
   AdminAdminProductsIndexRoute: AdminAdminProductsIndexRoute,
   AdminAdminSettingsIndexRoute: AdminAdminSettingsIndexRoute,
 }

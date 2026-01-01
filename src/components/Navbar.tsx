@@ -266,7 +266,7 @@ const Navbar = () => {
                                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                                         <Link to="/blogs" params={{}}>Blogs</Link>
                                     </NavigationMenuLink>
-                                </NavigationMenuItem>
+                                </NavigationMenuItem>   
 
                                 {/* <NavigationMenuItem>
                                     <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
