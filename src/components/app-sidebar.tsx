@@ -43,8 +43,8 @@ export function AppSidebar() {
                 alt="" 
                 />
           </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
+          <SidebarGroupContent >
+            <SidebarMenu >
               {items.map((item) => (
                 <SidebarMenuItem key={item.title} >
                   <SidebarMenuButton asChild size={"lg"}>

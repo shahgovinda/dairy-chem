@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { Plus, Search, Pencil, Trash2, Filter } from 'lucide-react'
 import {
@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import type { Product as ClientProduct, Category } from '@/types/product'
 import { Input } from '@/components/ui/input'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -24,6 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { getProducts } from '@/services/productsServices'
 
 export const Route = createFileRoute('/admin/_admin/products/')({
   component: AdminProducts,
@@ -33,77 +34,67 @@ interface Product extends ClientProduct {
   status: 'Active' | 'Draft'
 }
 
-const products: Product[] = [
-  {
-    id: 'semi-automatic-capsule-filling-machine',
-    name: 'SEMI AUTOMATIC CAPSULE FILLING MACHINE',
-    category: 'Capsule',
-    imageUrl: 'https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg',
-    status: 'Active',
-
-    description: 'A Semi Automatic Capsule Filling Machine is designed to fill hard gelatin or vegetarian capsules.',
-    features: [],
-    advantages: [],
-    applicationAreas: [],
-    specifications: []
-  },
-  {
-    id: 'automatic-capsule-filling-machine',
-    name: 'Automatic Capsule Filling Machine',
-    category: 'Capsule',
-    imageUrl: 'https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg',
-    status: 'Active',
-
-    description: 'Fully automated capsule filling solution.',
-    features: [],
-    advantages: [],
-    applicationAreas: [],
-    specifications: []
-  },
-  {
-    id: 'blister-packing-machine',
-    name: 'Blister Packing Machine',
-    category: 'Injectibles',
-    imageUrl: 'https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg',
-    status: 'Draft',
-
-    description: 'High speed blister packing machine.',
-    features: [],
-    advantages: [],
-    applicationAreas: [],
-    specifications: []
-  },
-]
-
 function AdminProducts() {
+  const [localProducts, setLocalProducts] = useState<Product[]>([])
+  const [searchQuery, setSearchQuery] = useState('')
   const [sortAlphabetical, setSortAlphabetical] = useState(false)
   // State to track which categories are selected for filtering
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
 
-  const uniqueCategories = Array.from(new Set(products.map((p) => p.category)))
+  const navigate = useNavigate()
+  const uniqueCategories = Array.from(new Set(localProducts.map((p) => p.category)))
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts()
+        // Map Firestore data to local Product interface, defaulting status to 'Active'
+        const formattedProducts = data.map((item: any) => ({
+          ...item,
+          status: item.status || 'Active'
+        })) as Product[]
+        setLocalProducts(formattedProducts)
+      } catch (error) {
+        console.error('Failed to fetch products:', error)
+      }
+    }
+    fetchProducts()
+  }, [])
 
   // Filter and sort products based on state
-  const filteredProducts = products
-    .filter((product) =>
+  const filteredProducts = localProducts
+    .filter((product) => {
       // If no categories are selected, show all products.
       // Otherwise, check if the product's category is in the selected list.
-      selectedCategories.length === 0 || selectedCategories.includes(product.category)
-    )
+      const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category)
+      const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      return matchesCategory && matchesSearch
+    })
     .sort((a, b) => (sortAlphabetical ? a.name.localeCompare(b.name) : 0))
 
+  const handleDelete = (id: string) => {
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      setLocalProducts((prev) => prev.filter((p) => p.code !== id))
+    }
+  }
+
   return (
-    <div className="flex-1 p-6 space-y-6 border">
+    <div className="flex-1 p-6 max-w-7xl mx-auto space-y-6 border">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Products</h1>
         </div>
-
       </div>
 
       <div className='flex items-center justify-between'>
         <div className='relative w-50 md:w-70'>
           <Search className='absolute left-2 top-1/2 -translate-y-1/2 ' size={15} />
-          <Input className='w-full pl-8 h-8 text-xs md:text-base bg-transparent  rounded-lg' placeholder="Search 30+ Products" />
+          <Input
+            className='w-full pl-8 h-8 text-xs md:text-base bg-transparent  rounded-lg'
+            placeholder="Search Products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center space-x-2">
@@ -146,7 +137,7 @@ function AdminProducts() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <Button>
+        <Button onClick={() => navigate({ to: "/admin/products/$productId", params: { productId: "new" } })}>
           <Plus className="mr-2 h-4 w-4" /> Add Product
         </Button>
       </div>
@@ -165,7 +156,7 @@ function AdminProducts() {
             </TableHeader>
             <TableBody>
               {filteredProducts.map((product) => (
-                <TableRow key={product.id}>
+                <TableRow key={product.code}>
                   <TableCell>
                     <img
                       src={product.imageUrl}
@@ -173,8 +164,8 @@ function AdminProducts() {
                       className="h-15 w-15 rounded-md object-cover bg-muted border"
                     />
                   </TableCell>
-                  <TableCell className="font-medium">
-                    <div className="line-clamp-2">{product.name}</div>
+                  <TableCell className="">
+                    <div className="line-clamp-2 font-semibold">{product.name}</div>
                   </TableCell>
                   <TableCell className="hidden md:table-cell text-muted-foreground">{product.category}</TableCell>
                   <TableCell className="hidden sm:table-cell">
@@ -191,7 +182,12 @@ function AdminProducts() {
                         <Pencil className="h-4 w-4" />
                         <span className="sr-only">Edit</span>
                       </Button>
-                      <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                        onClick={() => handleDelete(product.code)}
+                      >
                         <Trash2 className="h-4 w-4" />
                         <span className="sr-only">Delete</span>
                       </Button>
@@ -199,6 +195,13 @@ function AdminProducts() {
                   </TableCell>
                 </TableRow>
               ))}
+              {filteredProducts.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={5} className="h-24 text-center">
+                    No products found.
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </div>

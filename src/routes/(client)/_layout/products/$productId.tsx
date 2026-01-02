@@ -5,7 +5,7 @@ import { Mail } from 'lucide-react'
 import type { Product } from '@/types/product'
 
 const productData: Product = {
-    id: 'semi-automatic-capsule-filling-machine',
+    code: 'semi-automatic-capsule-filling-machine',
     name: 'SEMI AUTOMATIC CAPSULE FILLING MACHINE',
     category: 'Capsule',
     description: `A Semi Automatic Capsule Filling Machine is designed to fill hard gelatin or vegetarian

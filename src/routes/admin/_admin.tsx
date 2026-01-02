@@ -7,7 +7,7 @@ export const Route = createFileRoute('/admin/_admin')({
 
 function Layout() {
   return (
-    <SidebarProvider defaultOpen>
+    <SidebarProvider >
       <AppSidebar />
       <main className='relative w-full'>
         <div className='absolute inset-0 bg-[url("/logo.jpeg")] bg-center bg-no-repeat bg-fixed opacity-10 -z-10' />
