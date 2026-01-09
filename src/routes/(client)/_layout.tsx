@@ -3,6 +3,7 @@ import { Outlet, createFileRoute } from '@tanstack/react-router'
 import Navbar from '@/components/Navbar'
 import { ProductsProvider } from '@/contexts/ProductsContext'
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
+import Footer from '@/components/Footer';
 
 
 export const Route = createFileRoute('/(client)/_layout')({
@@ -14,6 +15,7 @@ function Layout() {
     <ProductsProvider>
       <Navbar />
       <Outlet />
+      <Footer/>
        <TawkMessengerReact
         propertyId= {import.meta.env.VITE_TAWK_PROPERTY_ID}
         widgetId= {import.meta.env.VITE_TAWK_WIDGET_ID}

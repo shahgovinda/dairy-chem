@@ -30,11 +30,11 @@ const items = [
     icon: Inbox,
   },
 
-  //   {
-  //     title: "Blogs",
-  //     url: "/admin/blogs",
-  //     icon: Book,
-  //   },
+    {
+      title: "Blogs",
+      url: "/admin/blogs",
+      icon: Book,
+    },
 ]
 const handleLogoutClick = async () => {
   try {

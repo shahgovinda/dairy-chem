@@ -28,10 +28,10 @@ export const storage = getStorage(app);
 // export const functions = getFunctions(app, "us-central1");
 // export const messaging = getMessaging(app);
 
-if (window.location.hostname === "localhost") {
-  connectAuthEmulator(auth, "http://127.0.0.1:9099");
-  connectFirestoreEmulator(db, "localhost", 8080);
-  connectStorageEmulator(storage, "localhost", 9199);
-}
+// if (window.location.hostname === "localhost") {
+//   connectAuthEmulator(auth, "http://127.0.0.1:9099");
+//   connectFirestoreEmulator(db, "localhost", 8080);
+//   connectStorageEmulator(storage, "localhost", 9199);
+// }
 
 setPersistence(auth, browserLocalPersistence);
