@@ -18,9 +18,11 @@ import { Route as clientLayoutContactRouteImport } from './routes/(client)/_layo
 import { Route as clientLayoutAboutRouteImport } from './routes/(client)/_layout/about'
 import { Route as AdminAdminSettingsIndexRouteImport } from './routes/admin/_admin/settings/index'
 import { Route as AdminAdminProductsIndexRouteImport } from './routes/admin/_admin/products/index'
+import { Route as AdminAdminBlogsIndexRouteImport } from './routes/admin/_admin/blogs/index'
 import { Route as clientLayoutProductsIndexRouteImport } from './routes/(client)/_layout/products/index'
 import { Route as clientLayoutBlogsIndexRouteImport } from './routes/(client)/_layout/blogs/index'
 import { Route as AdminAdminProductsProductIdRouteImport } from './routes/admin/_admin/products/$productId'
+import { Route as AdminAdminBlogsBlogIdRouteImport } from './routes/admin/_admin/blogs/$blogId'
 import { Route as clientLayoutProductsProductIdRouteImport } from './routes/(client)/_layout/products/$productId'
 import { Route as clientLayoutBlogsBlogIdRouteImport } from './routes/(client)/_layout/blogs/$blogId'
 
@@ -68,6 +70,11 @@ const AdminAdminProductsIndexRoute = AdminAdminProductsIndexRouteImport.update({
   path: '/products/',
   getParentRoute: () => AdminAdminRoute,
 } as any)
+const AdminAdminBlogsIndexRoute = AdminAdminBlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
+  getParentRoute: () => AdminAdminRoute,
+} as any)
 const clientLayoutProductsIndexRoute =
   clientLayoutProductsIndexRouteImport.update({
     id: '/products/',
@@ -85,6 +92,11 @@ const AdminAdminProductsProductIdRoute =
     path: '/products/$productId',
     getParentRoute: () => AdminAdminRoute,
   } as any)
+const AdminAdminBlogsBlogIdRoute = AdminAdminBlogsBlogIdRouteImport.update({
+  id: '/blogs/$blogId',
+  path: '/blogs/$blogId',
+  getParentRoute: () => AdminAdminRoute,
+} as any)
 const clientLayoutProductsProductIdRoute =
   clientLayoutProductsProductIdRouteImport.update({
     id: '/products/$productId',
@@ -106,9 +118,11 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminAdminIndexRoute
   '/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
   '/products/$productId': typeof clientLayoutProductsProductIdRoute
+  '/admin/blogs/$blogId': typeof AdminAdminBlogsBlogIdRoute
   '/admin/products/$productId': typeof AdminAdminProductsProductIdRoute
   '/blogs': typeof clientLayoutBlogsIndexRoute
   '/products': typeof clientLayoutProductsIndexRoute
+  '/admin/blogs': typeof AdminAdminBlogsIndexRoute
   '/admin/products': typeof AdminAdminProductsIndexRoute
   '/admin/settings': typeof AdminAdminSettingsIndexRoute
 }
@@ -120,9 +134,11 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminAdminIndexRoute
   '/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
   '/products/$productId': typeof clientLayoutProductsProductIdRoute
+  '/admin/blogs/$blogId': typeof AdminAdminBlogsBlogIdRoute
   '/admin/products/$productId': typeof AdminAdminProductsProductIdRoute
   '/blogs': typeof clientLayoutBlogsIndexRoute
   '/products': typeof clientLayoutProductsIndexRoute
+  '/admin/blogs': typeof AdminAdminBlogsIndexRoute
   '/admin/products': typeof AdminAdminProductsIndexRoute
   '/admin/settings': typeof AdminAdminSettingsIndexRoute
 }
@@ -137,9 +153,11 @@ export interface FileRoutesById {
   '/admin/_admin/': typeof AdminAdminIndexRoute
   '/(client)/_layout/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
   '/(client)/_layout/products/$productId': typeof clientLayoutProductsProductIdRoute
+  '/admin/_admin/blogs/$blogId': typeof AdminAdminBlogsBlogIdRoute
   '/admin/_admin/products/$productId': typeof AdminAdminProductsProductIdRoute
   '/(client)/_layout/blogs/': typeof clientLayoutBlogsIndexRoute
   '/(client)/_layout/products/': typeof clientLayoutProductsIndexRoute
+  '/admin/_admin/blogs/': typeof AdminAdminBlogsIndexRoute
   '/admin/_admin/products/': typeof AdminAdminProductsIndexRoute
   '/admin/_admin/settings/': typeof AdminAdminSettingsIndexRoute
 }
@@ -154,9 +172,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/blogs/$blogId'
     | '/products/$productId'
+    | '/admin/blogs/$blogId'
     | '/admin/products/$productId'
     | '/blogs'
     | '/products'
+    | '/admin/blogs'
     | '/admin/products'
     | '/admin/settings'
   fileRoutesByTo: FileRoutesByTo
@@ -168,9 +188,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/blogs/$blogId'
     | '/products/$productId'
+    | '/admin/blogs/$blogId'
     | '/admin/products/$productId'
     | '/blogs'
     | '/products'
+    | '/admin/blogs'
     | '/admin/products'
     | '/admin/settings'
   id:
@@ -184,9 +206,11 @@ export interface FileRouteTypes {
     | '/admin/_admin/'
     | '/(client)/_layout/blogs/$blogId'
     | '/(client)/_layout/products/$productId'
+    | '/admin/_admin/blogs/$blogId'
     | '/admin/_admin/products/$productId'
     | '/(client)/_layout/blogs/'
     | '/(client)/_layout/products/'
+    | '/admin/_admin/blogs/'
     | '/admin/_admin/products/'
     | '/admin/_admin/settings/'
   fileRoutesById: FileRoutesById
@@ -262,6 +286,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminProductsIndexRouteImport
       parentRoute: typeof AdminAdminRoute
     }
+    '/admin/_admin/blogs/': {
+      id: '/admin/_admin/blogs/'
+      path: '/blogs'
+      fullPath: '/admin/blogs'
+      preLoaderRoute: typeof AdminAdminBlogsIndexRouteImport
+      parentRoute: typeof AdminAdminRoute
+    }
     '/(client)/_layout/products/': {
       id: '/(client)/_layout/products/'
       path: '/products'
@@ -281,6 +312,13 @@ declare module '@tanstack/react-router' {
       path: '/products/$productId'
       fullPath: '/admin/products/$productId'
       preLoaderRoute: typeof AdminAdminProductsProductIdRouteImport
+      parentRoute: typeof AdminAdminRoute
+    }
+    '/admin/_admin/blogs/$blogId': {
+      id: '/admin/_admin/blogs/$blogId'
+      path: '/blogs/$blogId'
+      fullPath: '/admin/blogs/$blogId'
+      preLoaderRoute: typeof AdminAdminBlogsBlogIdRouteImport
       parentRoute: typeof AdminAdminRoute
     }
     '/(client)/_layout/products/$productId': {
@@ -326,14 +364,18 @@ const clientLayoutRouteWithChildren = clientLayoutRoute._addFileChildren(
 
 interface AdminAdminRouteChildren {
   AdminAdminIndexRoute: typeof AdminAdminIndexRoute
+  AdminAdminBlogsBlogIdRoute: typeof AdminAdminBlogsBlogIdRoute
   AdminAdminProductsProductIdRoute: typeof AdminAdminProductsProductIdRoute
+  AdminAdminBlogsIndexRoute: typeof AdminAdminBlogsIndexRoute
   AdminAdminProductsIndexRoute: typeof AdminAdminProductsIndexRoute
   AdminAdminSettingsIndexRoute: typeof AdminAdminSettingsIndexRoute
 }
 
 const AdminAdminRouteChildren: AdminAdminRouteChildren = {
   AdminAdminIndexRoute: AdminAdminIndexRoute,
+  AdminAdminBlogsBlogIdRoute: AdminAdminBlogsBlogIdRoute,
   AdminAdminProductsProductIdRoute: AdminAdminProductsProductIdRoute,
+  AdminAdminBlogsIndexRoute: AdminAdminBlogsIndexRoute,
   AdminAdminProductsIndexRoute: AdminAdminProductsIndexRoute,
   AdminAdminSettingsIndexRoute: AdminAdminSettingsIndexRoute,
 }
