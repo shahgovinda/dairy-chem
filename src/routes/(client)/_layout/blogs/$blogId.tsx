@@ -14,6 +14,7 @@ function BlogPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    
     const fetchBlog = async () => {
       try {
         const data = await getBlogById(blogId)

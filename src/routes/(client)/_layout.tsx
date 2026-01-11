@@ -5,6 +5,8 @@ import { ProductsProvider } from '@/contexts/ProductsContext'
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 import Footer from '@/components/Footer';
 import { BlogsProvider } from '@/contexts/BlogsContext';
+import { Toaster } from '@/components/ui/sonner';
+
 
 
 export const Route = createFileRoute('/(client)/_layout')({
@@ -14,15 +16,16 @@ export const Route = createFileRoute('/(client)/_layout')({
 function Layout() {
   return (
     <ProductsProvider>
-    <BlogsProvider>
-      <Navbar />
-      <Outlet />
-      <Footer/>
-       <TawkMessengerReact
-        propertyId= {import.meta.env.VITE_TAWK_PROPERTY_ID}
-        widgetId= {import.meta.env.VITE_TAWK_WIDGET_ID}
-      />
-    </BlogsProvider>
+      <BlogsProvider>
+        <Navbar />
+        <Outlet />
+        <Footer />
+        <TawkMessengerReact
+          propertyId={import.meta.env.VITE_TAWK_PROPERTY_ID}
+          widgetId={import.meta.env.VITE_TAWK_WIDGET_ID}
+        />
+        <Toaster />
+      </BlogsProvider>
     </ProductsProvider>
   )
 }

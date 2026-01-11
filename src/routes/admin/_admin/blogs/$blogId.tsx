@@ -1,5 +1,6 @@
-import 'react-quill/dist/quill.bubble.css';
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill-new/dist/quill.snow.css';
+import 'react-quill-new/dist/quill.bubble.css';
+import ReactQuill from 'react-quill-new';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,7 +12,6 @@ import { useState, useEffect } from 'react'
 import { addBlogToFirestore, getBlogById, updateBlog } from '@/services/blogService'
 import { uploadProductImage } from '@/services/productsServices';
 import { toast } from 'sonner'
-import ReactQuill from 'react-quill-new';
 import type { Blog } from './index'
 
 export const Route = createFileRoute('/admin/_admin/blogs/$blogId')({

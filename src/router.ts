@@ -12,6 +12,7 @@ import { routeTree } from './routeTree.gen'
 export function createRouter() {
   return createTanStackRouter({
     routeTree,
+    scrollRestoration: true, // Enable this
   })
 }
 
