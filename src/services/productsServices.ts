@@ -25,17 +25,22 @@ export const deleteProduct = async (productId: string) => {
   }
 }
 
-export const updateProduct = async (productId: string, productData: any, imageFile?: File) => {
+export const updateProduct = async (productId: string, productData: any, imageFile?: File, chartFile?: File) => {
   try {
     const productRef = doc(db, 'products', productId);
     
     let imageUrl = productData.imageUrl;
+    let chartUrl = productData.chart;
     
     if (imageFile) {
        imageUrl = await uploadProductImage(imageFile, `products/${productId}`);
     }
     
-    const dataToUpdate = { ...productData, imageUrl, updatedAt: new Date().toISOString() };
+    if (chartFile) {
+       chartUrl = await uploadProductImage(chartFile, `products/${productId}/chart`);
+    }
+    
+    const dataToUpdate = { ...productData, imageUrl, chart: chartUrl, updatedAt: new Date().toISOString() };
     delete dataToUpdate.id; // Ensure ID is not stored as a field inside the document
 
     await updateDoc(productRef, dataToUpdate);
@@ -78,21 +83,27 @@ export const getProductById = async (productId: string) => {
   }
 }
 
-export const addProduct = async (productData: any, imageFile?: File) => {
+export const addProduct = async (productData: any, imageFile?: File, chartFile?: File) => {
   try {
     const itemCollectionRef = collection(db, 'products');
     const productDoc = doc(itemCollectionRef);
     const productId = productDoc.id;
     
     let imageUrl = productData.imageUrl || '';
+    let chartUrl = productData.chart || '';
     
     if (imageFile) {
        imageUrl = await uploadProductImage(imageFile, `products/${productId}`);
     }
     
+    if (chartFile) {
+       chartUrl = await uploadProductImage(chartFile, `products/${productId}/chart`);
+    }
+    
     await setDoc(productDoc, {
       ...productData,
       imageUrl,
+      chart: chartUrl,
       createdAt: new Date().toISOString()
     });
     

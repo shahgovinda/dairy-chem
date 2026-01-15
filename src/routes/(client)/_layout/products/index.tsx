@@ -1,6 +1,7 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
 import { useProducts } from '@/contexts/ProductsContext'
+import dairychem from '@/data/dairychem.json';
 
 import { createFileRoute } from '@tanstack/react-router'
 import { useMemo } from 'react'
@@ -27,6 +28,7 @@ const categories = [
     'Injectibles',
     'Liquid',
     'Ointment',
+    'API'
 ]
 
 
@@ -109,7 +111,7 @@ function ProductsIndexPage() {
                                 <div className='flex justify-between items-center'>
                                     <Button className='' onClick={(e) => {
                                         e.stopPropagation()
-                                        const phoneNumber = '919876543210' // Replace with your WhatsApp number
+                                        const phoneNumber = dairychem[0].phone[1] // Replace with your WhatsApp number
                                         const message = `Hello, I am interested in ${product.name}`
                                         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
                                         window.open(url, '_blank')

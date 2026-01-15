@@ -1,4 +1,4 @@
-export type Category = 'Capsule' | 'Granulation' | 'Injectibles' | 'Liquid' | 'Ointment' | "Other";
+export type Category = 'Capsule' | 'Granulation' | 'Injectibles' | 'Liquid' | 'Ointment' | "API";
 export interface ProductSpecification {
     label: string
     value: string
@@ -15,4 +15,5 @@ export interface Product {
     advantages: string[]
     applicationAreas: string[]
     specifications: ProductSpecification[]
+    chart: string
 }

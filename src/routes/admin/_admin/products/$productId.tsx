@@ -32,7 +32,7 @@ export const Route = createFileRoute('/admin/_admin/products/$productId')({
 })
 
 // Categories defined in product.ts. Used for the dropdown selection.
-const CATEGORIES: Category[] = ['Capsule', 'Granulation', 'Injectibles', 'Liquid', 'Ointment', 'Other']
+const CATEGORIES: Category[] = ['Capsule', 'Granulation', 'Injectibles', 'Liquid', 'Ointment', 'API']
 
 // Default empty state for a new product.
 // We use this to reset the form when creating a brand new item.
@@ -45,7 +45,8 @@ const emptyProduct: Product = {
   features: [],
   advantages: [],
   applicationAreas: [],
-  specifications: []
+  specifications: [],
+  chart: '',
 }
 
 function AdminProductDetail() {
@@ -60,6 +61,8 @@ function AdminProductDetail() {
   const [formData, setFormData] = useState<Product>(emptyProduct)
   // State to hold the actual file object if the user uploads a new image.
   const [imageFile, setImageFile] = useState<File | null>(null)
+  // State to hold the actual file object if the user uploads a new chart image.
+  const [chartFile, setChartFile] = useState<File | null>(null)
 
   // Effect to handle initialization: Reset form for new products or fetch data for existing ones
   // This runs whenever 'productId' or 'isNew' changes.
@@ -147,6 +150,15 @@ function AdminProductDetail() {
     }
   }
 
+  // CHART FILE HANDLER: Handles the file input for chart image upload.
+  const handleChartFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0]
+      setChartFile(file)
+      setFormData(prev => ({ ...prev, chart: URL.createObjectURL(file) }))
+    }
+  }
+
   // SAVE HANDLER: Submits the form data to the backend.
   const handleSave = async () => {
     // Basic validation
@@ -156,8 +168,8 @@ function AdminProductDetail() {
     }
 
     const promise = (isNew
-      ? addProduct(formData, imageFile || undefined)
-      : updateProduct(productId, formData, imageFile || undefined)
+      ? addProduct(formData, imageFile || undefined, chartFile || undefined)
+      : updateProduct(productId, formData, imageFile || undefined, chartFile || undefined)
     ).then(() => {
       navigate({ to: '/admin/products' })
     })
@@ -335,6 +347,48 @@ function AdminProductDetail() {
               </Button>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Product Chart</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="w-full relative bg-muted rounded-lg overflow-hidden border flex items-center justify-center min-h-[200px]">
+                {formData.chart ? (
+                  <>
+                    <img src={formData.chart} alt="Chart Preview" className="w-full h-auto object-contain" />
+                    <Button 
+                      variant="destructive" 
+                      size="icon" 
+                      className="absolute top-2 right-2"
+                      onClick={() => {
+                        setFormData(prev => ({ ...prev, chart: '' }))
+                        setChartFile(null)
+                        const input = document.getElementById('chartFile') as HTMLInputElement
+                        if (input) input.value = ''
+                      }}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </>
+                ) : (
+                  <div className="text-muted-foreground flex flex-col items-center p-4">
+                    <Upload className="h-8 w-8 mb-2" />
+                    <span>No chart image</span>
+                  </div>
+                )}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="chartFile">Upload Chart Image</Label>
+                <Input 
+                  id="chartFile" 
+                  type="file" 
+                  accept="image/*"
+                  onChange={handleChartFileChange} 
+                />
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Right Column - Media & Lists */}
@@ -374,8 +428,6 @@ function AdminProductDetail() {
               </div>
             </CardContent>
           </Card>
-
-          
 
           <Card>
             <CardHeader>

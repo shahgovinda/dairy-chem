@@ -16,21 +16,22 @@ export const Route = createFileRoute('/(client)/_layout/')({
 })
 
 const images = [
-  "/ui_images/hero-banner1.jpg",
-  // "/ui_images/footer.png",
+  "/ui_images/hero1.jpg",
+  "/ui_images/hero2.webp",
+  "/ui_images/grid-bg.jpg",
   "/ui_images/grid-chem.jpg",
   "/ui_images/bannermin1.jpg",
-  // "/ui_images/hero.jpg",
+ 
 ];
 
-const herolines = [
-  "HEAVY MACHINERY SOLUTIONS FOR EVERY INDUSTRY",
-]
 // const herolines = [
 //   "HEAVY MACHINERY SOLUTIONS FOR EVERY INDUSTRY",
-//   "Precision. Purity. Performance.",
-//   "Providing Durable Equipment for All Your Industrial Needs"
 // ]
+const herolines = [
+  "HEAVY MACHINERY SOLUTIONS FOR EVERY INDUSTRY",
+  "Providing Durable Equipment for All Your Industrial Needs",
+  "Precision. Purity. Performance.",
+]
 
 const testimonials = [
   {
@@ -175,9 +176,9 @@ function Home() {
       <section className='bg-primary '>
         <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10  px-4 lg:px-50 py-10 lg:py-20'>
           <div className='grid grid-cols-2 grid-rows-2  gap-4'>
-            <img src="/ui_images/hero-banner1.jpg" alt="" className='row-span-2 h-60 md:h-90 w-full object-cover rounded-lg' />
-            <img src="/ui_images/hero-banner1.jpg" alt="" className='h-full w-full object-cover rounded-lg' />
-            <img src="/ui_images/hero-banner1.jpg" alt="" className='h-full w-full object-cover rounded-lg' />
+            <img src="/ui_images/about.jpeg" alt="" className='row-span-2 h-60 md:h-90 w-full object-cover rounded-lg' />
+            <img src="/ui_images/hero1.jpg" alt="" className='h-full w-full object-cover rounded-lg' />
+            <img src="/ui_images/hero2.webp" alt="" className='h-full w-full object-cover rounded-lg' />
           </div>
           <div className='flex flex-col gap-5 justify-between items-center md:items-start text-white'>
             <h1 className='text-2xl  lg:text-3xl font-black'>About Us</h1>

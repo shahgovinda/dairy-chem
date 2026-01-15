@@ -42,7 +42,7 @@ function About() {
             <p className='text-center text-lg font-medium'>At Dairychem Pharma Machineries, we believe that reliable machinery is the backbone of quality pharmaceutical production. Founded with a commitment to precision, performance, and long-term partnerships, we specialize in designing and manufacturing high-quality pharmaceutical and allied process equipment that meets global industry standards.</p>
             <p className='text-center text-lg font-medium'>With years of hands-on experience in pharma machinery manufacturing, we understand the real challenges faced by pharmaceutical, nutraceutical, chemical, and food processing industries. Our approach is simple: listen carefully, engineer smartly, and deliver consistently.</p>
           </div>
-          <img className='rounded-3xl' src="https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg" alt="" />
+          <img className='rounded-3xl' src="/ui_images/hero2.webp" alt="" />
           <p className='text-center text-lg font-medium'>We combine advanced technology with skilled workmanship to offer machines that are efficient, durable, and easy to operate. From individual equipment to complete processing solutions, every machine is built with strict quality control, safety compliance, and customer convenience in mind.</p>
           <p className='text-center text-lg font-medium'>What truly sets us apart is our human approach to business. We don’t just supply machines—we build relationships. Our team works closely with clients to understand their requirements, provide honest guidance, and ensure dependable after-sales support. Your success is our success, and we take that responsibility seriously.</p>
           <p className='text-center text-lg font-medium'>Today, Dairychem Pharma Machineries is trusted by clients across India for its integrity, technical expertise, and commitment to excellence. As we continue to grow, our focus remains the same: delivering reliable solutions that help our customers grow confidently and sustainably.</p>
@@ -51,9 +51,9 @@ function About() {
 
         <div className='flex flex-col lg:flex-row gap-10 mt-20'>
           <aside className='w-full lg:w-1/2 grid grid-cols-2 gap-4'>
-            <img className='rounded-2xl w-full h-48 object-cover' src="https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg" alt="Machinery 1" />
-            <img className='rounded-2xl w-full h-48 object-cover' src="https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg" alt="Machinery 2" />
-            <img className='col-span-2 rounded-2xl w-full h-48 object-cover' src="https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg" alt="Machinery 3" />
+            <img className='rounded-2xl w-full h-48 object-cover' src="/ui_images/hero2.webp" alt="Machinery 1" />
+            <img className='rounded-2xl w-full h-48 object-cover' src="/ui_images/about.jpeg" alt="Machinery 2" />
+            <img className='col-span-2 rounded-2xl w-full h-48 object-cover' src="ui_images/grid-bg.jpg" alt="Machinery 3" />
           </aside>
           <aside className='w-full lg:w-1/2 flex flex-col justify-center'>
             <h2 className='text-3xl lg:text-4xl font-bold mb-6'>Our Mission & Vision</h2>

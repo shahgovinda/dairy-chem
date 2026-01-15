@@ -64,9 +64,9 @@ const Navbar = () => {
                             <span>
                                 <h1 className='text-md md:text-2xl font-black text-primary'>DairyChem Pharma Machineries</h1>
                                 <span className='flex gap-2'>
-                                    <p className='text-[9px] font-semibold  md:text-xs'>Mira Road, Surat, Gujarat - 402125 </p>
+                                    <p className='text-[9px] font-semibold  md:text-xs'>Vasai East, Palghar, Maharashtra - 401208 </p>
                                     <p className='text-[9px] font-semibold md:text-xs'>|</p>
-                                    <p className='text-[9px] flex gap-1 font-semibold md:text-xs'>GSTIN: <p className='font-bold'>27AAGCS0001Q1ZJ </p></p>
+                                    <p className='text-[9px] flex gap-1 font-semibold md:text-xs'>GSTIN: <p className='font-bold'>{dairychem[0].GSTIN}</p></p>
                                 </span>
                             </span>
                         </Link>
@@ -188,15 +188,16 @@ const Navbar = () => {
 
                     <div className='hidden lg:flex mx-auto md:mx-0 item-center md:gap-10 md:mt-0 mt-5 gap-4 text-[8px] md:text-base'>
 
-                        <span className='flex flex-col items-start md:items-end font-semibold'>
+                        {/* <span className='flex flex-col items-start md:items-end font-semibold'>
                             <p className='flex items-center gap-1'><CheckSquare2 size={20} /> Certified</p>
                             <p>Certificate Name</p>
-                        </span>
+                        </span> */}
 
-                        <Button size={'lg'}><PhoneCall size={20} /> +234 1 234 5678</Button>
-                        <Button size={'lg'}>Enquire Now</Button>
-
-
+                        <Button size={'lg'}><PhoneCall size={20} />{dairychem[0].phone[0]}</Button>
+                         <Button onClick={()=>{navigate({to:"/contact"})}} size={'lg'}><Mail size={20} />Enquire Now</Button>
+                        {/* <a  href={`mailto:${dairychem[0].email[0]}`} >
+                            <Button size={'lg'}><Mail size={20} />Enquire Now</Button>
+                        </a> */}
                     </div>
                 </div>
 
@@ -235,9 +236,9 @@ const Navbar = () => {
                                                                 className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                                             >
                                                                 <div className="text-sm font-medium leading-none">{product.name}</div>
-                                                                <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+                                                                {/* <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
                                                                     {product.description}
-                                                                </p>
+                                                                </p> */}
                                                             </Link>
                                                         </NavigationMenuLink>
                                                     ))}

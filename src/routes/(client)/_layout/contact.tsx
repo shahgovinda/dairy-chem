@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import dairychem from '@/data/dairychem.json';
 
 import { useForm as useReactForm } from "@tanstack/react-form"
 import { toast } from "sonner"
@@ -21,6 +22,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { Mail, Phone } from 'lucide-react';
 
 export const Route = createFileRoute('/(client)/_layout/contact')({
   component: Contact,
@@ -111,7 +113,7 @@ function Contact() {
                           onChange={(e) => field.handleChange(e.target.value)}
                           aria-invalid={isInvalid}
                           placeholder="John Doe"
-                          required
+                          required autoFocus 
                         />
                         {isInvalid && <FieldError errors={field.state.meta.errors} />}
                       </Field>
@@ -202,8 +204,8 @@ function Contact() {
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
                           placeholder="How can we help you?"
-                          rows={4}
-                          className="resize-none"
+                          rows={3}
+                          className="resize-y min-h-30 max-h-60"
                           aria-invalid={isInvalid}
                           required
                         />
@@ -221,24 +223,38 @@ function Contact() {
             <div className="space-y-6 text-lg">
               <div>
                 <h3 className="font-bold mb-2">Address</h3>
-                <p className="text-gray-200">
-                  123 Dairy Lane<br />
-                  Chem City, Pharma State 56789
+                <p className="text-gray-200 text-sm">
+                  {dairychem[0].address}
                 </p>
               </div>
               <div>
                 <h3 className="font-bold mb-2">Contact</h3>
-                <p className="text-gray-200">
-                  Email: contact@dairychempharma.com<br />
-                  Phone: +1 (555) 123-4567
-                </p>
+                {
+                  dairychem[0].phone.map((phone, index) => (
+                    <p key={index} className="flex gap-2 text-sm items-center text-gray-200">
+                      <Phone size={16} /> {phone}<br />
+                    </p>
+                  ))
+                }
+              </div>
+              <div>
+                <h3 className="font-bold mb-2">Email Us</h3>
+                {
+                  dairychem[0].email.map((email, index) => (
+                    <p key={index} className="flex gap-2 text-sm items-center text-gray-200">
+                      <Mail size={16} /> {email}<br />
+                    </p>
+                  ))
+                }
               </div>
               <div>
                 <h3 className="font-bold mb-2">Business Hours</h3>
-                <p className="text-gray-200">
-                  Monday - Friday: 9:00 AM - 5:00 PM<br />
-                  Saturday - Sunday: Closed
+                <p className="flex gap-2 text-sm items-center text-gray-200">
+                  Monday to Saturday <br/>
+                  9:00 AM to 6:00 PM<br/>
+                  Sunday Closed
                 </p>
+
               </div>
             </div>
           </div>

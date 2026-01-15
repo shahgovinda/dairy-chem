@@ -5,6 +5,7 @@ import { Mail } from 'lucide-react'
 import type { Product } from '@/types/product'
 import { useEffect, useState } from 'react'
 import { getProductById } from '@/services/productsServices'
+import dairychem from '@/data/dairychem.json';
 
 
 export const Route = createFileRoute('/(client)/_layout/products/$productId')({
@@ -50,7 +51,7 @@ function ProductDetailPage() {
         // Invoke the fetch function
         fetchProductDetails();
     }, [productId]); // Dependency array ensures this runs only when productId changes
-    
+
     const sections = [
         { id: 'features', label: 'Features', hasData: productData.features?.length > 0 },
         { id: 'advantages', label: 'Advantages', hasData: productData.advantages?.length > 0 },
@@ -59,7 +60,7 @@ function ProductDetailPage() {
     ];
 
     const handleWhatsAppEnquiry = () => {
-        const phoneNumber = '919876543210' // Replace with your WhatsApp number
+        const phoneNumber = dairychem[0].phone[1] // Replace with your WhatsApp number
         const message = `Hello, I am interested in ${productData.name}`
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
         window.open(url, '_blank')
@@ -179,6 +180,16 @@ function ProductDetailPage() {
                                     </div>
                                 </section>
                             )}
+                            {
+                                productData.chart && (
+                                    <section id='specifications' className='scroll-mt-24'>
+                                        <h2 className='text-2xl font-bold mb-4'>Product Chart</h2>
+                                        <div className=' overflow-hidden'>
+                                            <img src="/chart2.png" alt="" />
+                                        </div>
+                                    </section>
+                                )
+                            }
                         </div>
                     </div>
                 </div>

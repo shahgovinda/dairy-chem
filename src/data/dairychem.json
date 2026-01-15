@@ -2,8 +2,11 @@
   {
     "companyName": "Dairychem Pharma Machineries",
     "address": "Dairychem House, Bldg No.4,Shubhadra Industrial Estate, Tunganeshwar Mandir Road, Tungar Phata, Vasai East, Palghar-401208, Maharashtra",
-    "phone1": "+9175775529 ",
-    "phone2": "+9923225470 ",
-    "email": "enquiry@company.com"
+    "phone": ["9175775527", "9175775529", "9175775526"],
+    "email": ["INFO@DAIRYCHEMIND.IN", "MKTG@DAIRYCHEMIND.IN"],
+    "instagram": "DAIRYCHEMPHARMA.IN",
+    "facebook": "DAIRYCHEM PHARMA MACHINERIES",
+    "linkedin": "DAIRYCHEM PHARMA MACHINERIES",
+    "GSTIN": "27BUWPK7317M1ZQ"
   }
 ]
