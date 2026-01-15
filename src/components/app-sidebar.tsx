@@ -1,4 +1,4 @@
-import { Book, Calendar, ExternalLink, Form, Home, Inbox, Search, Settings, ShoppingBag } from "lucide-react"
+import { Book, Calendar, ExternalLink, Form, Home, Inbox, LogOut, Search, Settings, ShoppingBag } from "lucide-react"
 
 import {
   Sidebar,
@@ -57,13 +57,12 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel className="h-22 border flex justify-center p-1">
             <img className="w-20"
-              src="/logo.jpeg"
+              src="/logo.jpg"
               alt=""
             />
           </SidebarGroupLabel>
           <SidebarGroupContent >
             <SidebarMenu >
-              
                 <SidebarMenuItem >
                   <SidebarMenuButton asChild size={"lg"}>
                     <Link to={"/"}>
@@ -96,14 +95,13 @@ export function AppSidebar() {
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-           
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <Button color="destructive" onClick={handleLogoutClick}>
-          LogOut
+        <Button className="bg-red-600" onClick={handleLogoutClick}>
+         <LogOut/> Log Out
         </Button>
       </SidebarFooter>
     </Sidebar>

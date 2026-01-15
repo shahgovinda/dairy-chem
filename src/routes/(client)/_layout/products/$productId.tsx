@@ -24,7 +24,8 @@ function ProductDetailPage() {
         features: [],
         advantages: [],
         applicationAreas: [],
-        specifications: []
+        specifications: [],
+        chart: '',
     })
 
     useEffect(() => {

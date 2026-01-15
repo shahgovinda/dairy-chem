@@ -15,7 +15,7 @@ function RootComponent() {
     <>
       {/* {!isAdmin && <Navbar />} */}
       <Outlet />
-      <TanStackRouterDevtools />
+      {/* <TanStackRouterDevtools /> */}
     </>
   )
 }
