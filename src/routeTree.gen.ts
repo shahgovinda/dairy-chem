@@ -14,6 +14,7 @@ import { Route as AdminAdminRouteImport } from './routes/admin/_admin'
 import { Route as clientLayoutRouteImport } from './routes/(client)/_layout'
 import { Route as AdminAdminIndexRouteImport } from './routes/admin/_admin/index'
 import { Route as clientLayoutIndexRouteImport } from './routes/(client)/_layout/index'
+import { Route as clientLayoutSearchRouteImport } from './routes/(client)/_layout/search'
 import { Route as clientLayoutContactRouteImport } from './routes/(client)/_layout/contact'
 import { Route as clientLayoutAboutRouteImport } from './routes/(client)/_layout/about'
 import { Route as AdminAdminSettingsIndexRouteImport } from './routes/admin/_admin/settings/index'
@@ -48,6 +49,11 @@ const AdminAdminIndexRoute = AdminAdminIndexRouteImport.update({
 const clientLayoutIndexRoute = clientLayoutIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => clientLayoutRoute,
+} as any)
+const clientLayoutSearchRoute = clientLayoutSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => clientLayoutRoute,
 } as any)
 const clientLayoutContactRoute = clientLayoutContactRouteImport.update({
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/about': typeof clientLayoutAboutRoute
   '/contact': typeof clientLayoutContactRoute
+  '/search': typeof clientLayoutSearchRoute
   '/': typeof clientLayoutIndexRoute
   '/admin/': typeof AdminAdminIndexRoute
   '/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/about': typeof clientLayoutAboutRoute
   '/contact': typeof clientLayoutContactRoute
+  '/search': typeof clientLayoutSearchRoute
   '/': typeof clientLayoutIndexRoute
   '/admin': typeof AdminAdminIndexRoute
   '/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/(client)/_layout/about': typeof clientLayoutAboutRoute
   '/(client)/_layout/contact': typeof clientLayoutContactRoute
+  '/(client)/_layout/search': typeof clientLayoutSearchRoute
   '/(client)/_layout/': typeof clientLayoutIndexRoute
   '/admin/_admin/': typeof AdminAdminIndexRoute
   '/(client)/_layout/blogs/$blogId': typeof clientLayoutBlogsBlogIdRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/about'
     | '/contact'
+    | '/search'
     | '/'
     | '/admin/'
     | '/blogs/$blogId'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/about'
     | '/contact'
+    | '/search'
     | '/'
     | '/admin'
     | '/blogs/$blogId'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/(client)/_layout/about'
     | '/(client)/_layout/contact'
+    | '/(client)/_layout/search'
     | '/(client)/_layout/'
     | '/admin/_admin/'
     | '/(client)/_layout/blogs/$blogId'
@@ -256,6 +268,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof clientLayoutIndexRouteImport
+      parentRoute: typeof clientLayoutRoute
+    }
+    '/(client)/_layout/search': {
+      id: '/(client)/_layout/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof clientLayoutSearchRouteImport
       parentRoute: typeof clientLayoutRoute
     }
     '/(client)/_layout/contact': {
@@ -341,6 +360,7 @@ declare module '@tanstack/react-router' {
 interface clientLayoutRouteChildren {
   clientLayoutAboutRoute: typeof clientLayoutAboutRoute
   clientLayoutContactRoute: typeof clientLayoutContactRoute
+  clientLayoutSearchRoute: typeof clientLayoutSearchRoute
   clientLayoutIndexRoute: typeof clientLayoutIndexRoute
   clientLayoutBlogsBlogIdRoute: typeof clientLayoutBlogsBlogIdRoute
   clientLayoutProductsProductIdRoute: typeof clientLayoutProductsProductIdRoute
@@ -351,6 +371,7 @@ interface clientLayoutRouteChildren {
 const clientLayoutRouteChildren: clientLayoutRouteChildren = {
   clientLayoutAboutRoute: clientLayoutAboutRoute,
   clientLayoutContactRoute: clientLayoutContactRoute,
+  clientLayoutSearchRoute: clientLayoutSearchRoute,
   clientLayoutIndexRoute: clientLayoutIndexRoute,
   clientLayoutBlogsBlogIdRoute: clientLayoutBlogsBlogIdRoute,
   clientLayoutProductsProductIdRoute: clientLayoutProductsProductIdRoute,
