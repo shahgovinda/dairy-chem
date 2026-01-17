@@ -15,21 +15,26 @@ export const Route = createFileRoute('/(client)/_layout/')({
 
 })
 
-const images = [
-  "/ui_images/hero1.jpg",
-  "/ui_images/hero2.webp",
-  "/ui_images/grid-bg.jpg",
-  "/ui_images/grid-chem.jpg",
-  "/ui_images/bannermin1.jpg",
+// const images = [
+//   "/ui_images/hero1.jpg",
+//   "/ui_images/hero2.webp",
+//   "/ui_images/grid-bg.jpg",
+//   "/ui_images/grid-chem.jpg",
+//   "/ui_images/bannermin1.jpg",
  
+// ];
+const images = [
+  "/ui_images/slide1.jpeg",
+  "/ui_images/slide2.jpeg",
+  "/ui_images/slide3.jpeg",
 ];
 
 // const herolines = [
 //   "HEAVY MACHINERY SOLUTIONS FOR EVERY INDUSTRY",
 // ]
 const herolines = [
-  "HEAVY MACHINERY SOLUTIONS FOR EVERY INDUSTRY",
-  "Providing Durable Equipment for All Your Industrial Needs",
+  "ADVANCED DAIRY, CHEMICAL & PHARMA MACHINERY",
+  "Engineering Excellence for Processing Industries",
   "Precision. Purity. Performance.",
 ]
 

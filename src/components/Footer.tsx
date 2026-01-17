@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className='bg-[url(/ui_images/footer2.png)] bg-cover bg-center '>
             <div className='h-full bg-black/70 '>
-                <div className='max-w-6xl mx-auto h-full  px-4 md:px-10 lg:px-0 py-20'>
+                <div className='max-w-6xl mx-auto h-full  px-4 md:px-10 lg:px-0 py-10'>
                     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-15'>
                         <div className=''>
                             <div className='flex items-center gap-2'>
@@ -14,27 +14,29 @@ const Footer = () => {
                                     <img src={logo} className='w-15' alt="" />
                                 </span>
                                 <span>
-                                    <h1 className='text-lg  font-bold text-white'>Dairy Chem Pharma Machinery</h1>
+                                    <h1 className='text-lg  font-bold text-white'>Dairy Chem Pharma Machineries</h1>
                                 </span>
                             </div>
-                            <p className='text-white mt-10 text-[15px]'>Dairy Chem Pharma is not responsible for, and expressly disclaims all liability for, damages of any kind arising out of use, reference to, or reliance on any information contained within the site. While the information...</p>
+                            <p className='text-white mt-5 line-clamp-6 text-[15px]'>Dairychem Pharma Machineries is a reliable manufacturer and supplier of pharmaceutical and chemical processing machinery, serving clients across India and abroad. We are dedicated to supporting the modern manufacturing requirements of pharmaceutical and chemical industries by delivering efficient, durable, and precision-engineered equipment that meets international quality expectations.</p>
                         </div>
 
                         <div className=' text-white flex flex-col gap-3'>
-                            <h2 className='text-lg font-bold mb-4'>Corporate</h2>
+                            <h2 className='text-lg font-bold mb-3'>Quick Links</h2>
                             <Link to="/" className='text-sm font-bold hover:text-accent'>Home</Link>
                             <Link to="/about" className='text-sm font-bold hover:text-accent'>About</Link>
+                            <Link to="/products" search={{ filter: '' }} className='text-sm font-bold hover:text-accent'>Products</Link>
                             <Link to="/contact" className='text-sm font-bold hover:text-accent'>Contact Us</Link>
                             <Link to="/blogs" className='text-sm font-bold hover:text-accent'>Blogs</Link>
                         </div>
 
                         <div className=' text-white flex flex-col gap-3'>
-                            <h2 className='text-lg font-bold mb-4'>Categories</h2>
+                            <h2 className='text-lg font-bold mb-3'>Categories</h2>
                             <Link to="/products" search={{ filter: 'Capsule' }} className='text-sm font-bold hover:text-accent'>Capsules</Link>
                             <Link to="/products" search={{ filter: 'Ointment' }} className='text-sm font-bold hover:text-accent'>Ointment</Link>
                             <Link to="/products" search={{ filter: 'Granulation' }} className='text-sm font-bold hover:text-accent'>Granulation</Link>
                             <Link to="/products" search={{ filter: 'Liquid' }} className='text-sm font-bold hover:text-accent'>Liquid</Link>
                             <Link to="/products" search={{ filter: 'Injectable' }} className='text-sm font-bold hover:text-accent'>Injectibles</Link>
+                            <Link to="/products" search={{ filter: 'API' }} className='text-sm font-bold hover:text-accent'>API</Link>
 
                         </div>
                         <div className=' text-white flex flex-col gap-3 md:col-span-3 lg:col-span-1'>
@@ -46,7 +48,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h2 className='text-lg font-bold mb-3'>Call Us</h2>
-                                <p className='text-sm flex flex-col gap-2 font-bold'>
+                                <p className='text-sm flex flex-col gap-1 font-bold'>
                                     {labprochem[0].phone.map((phone => (
                                         <span key={phone}>{phone}</span>
                                     )))}
@@ -54,7 +56,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h2 className='text-lg font-bold mb-3'>Write Us</h2>
-                                <p className='text-sm flex flex-col gap-2 font-bold'>
+                                <p className='text-sm flex flex-col gap-1 font-bold'>
                                     {labprochem[0].email.map((email => (
                                         <span key={email}>{email}</span>
                                     )))}
