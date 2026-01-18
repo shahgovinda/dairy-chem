@@ -262,8 +262,18 @@ function Home() {
 
               <SwiperSlide className=''>
                 <div className="w-full relative group h-60 md:size-70 rounded-xl overflow-hidden">
+                  <img src="https://www.synovaticindia.in/images/industry/cosmetic.jpg" alt={`Industry `} className="w-full h-full object-cover hover:scale-110 group-hover:brightness-50 transition-all duration-500" />
+                  <p className='absolute w-full text-center bottom-0 p-3 bg-accent/80 font-bold'>Cosmetics</p>
+                  <span className='absolute top-1/2 left-1/2 bg-white rounded-full group-hover:flex  hidden items-center justify-center -translate-x-1/2 z-10 -translate-y-1/2 p-3 '>
+                    <img src="https://www.synovaticindia.in/images/cosmetic-icon.svg" className='size-10 ' alt="" />
+                  </span>
+                </div>
+              </SwiperSlide>
+              
+              <SwiperSlide className=''>
+                <div className="w-full relative group h-60 md:size-70 rounded-xl overflow-hidden">
                   <img src="https://www.synovaticindia.in/images/industry/products3.png" alt={`Industry `} className="w-full h-full object-cover hover:scale-110 group-hover:brightness-50 transition-all duration-500" />
-                  <p className='absolute w-full text-center bottom-0 p-3 bg-accent/80 font-bold'>Pharmaceutical</p>
+                  <p className='absolute w-full text-center bottom-0 p-3 bg-accent/80 font-bold'>Pharmaceuticals</p>
                   <span className='absolute top-1/2 left-1/2 bg-white rounded-full group-hover:flex  hidden items-center justify-center -translate-x-1/2 z-10 -translate-y-1/2 p-3 '>
                     <img src="https://www.synovaticindia.in/images/pharmaceutical-icon.svg" className='size-10 ' alt="" />
                   </span>
@@ -296,15 +306,7 @@ function Home() {
                   </span>
                 </div>
               </SwiperSlide>
-              <SwiperSlide className=''>
-                <div className="w-full relative group h-60 md:size-70 rounded-xl overflow-hidden">
-                  <img src="https://www.synovaticindia.in/images/industry/products3.png" alt={`Industry `} className="w-full h-full object-cover hover:scale-110 group-hover:brightness-50 transition-all duration-500" />
-                  <p className='https://www.synovaticindia.in/images/industry/cosmetic.jpg'>Cosmetics</p>
-                  <span className='absolute top-1/2 left-1/2 bg-white rounded-full group-hover:flex  hidden items-center justify-center -translate-x-1/2 z-10 -translate-y-1/2 p-3 '>
-                    <img src="https://www.synovaticindia.in/images/pharmaceutical-icon.svg" className='size-10 ' alt="" />
-                  </span>
-                </div>
-              </SwiperSlide>
+             
 
 
             </Swiper>
