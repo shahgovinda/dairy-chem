@@ -23,9 +23,9 @@ const Navbar = () => {
     const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false)
 
     const categories = [
-        'Granulation ',
+        'Granulation',
         'Ointment',
-        'Liquid Section',
+        'Liquid',
         'Capsule',
         'Injectibles',
         'API'
@@ -143,7 +143,7 @@ const Navbar = () => {
                                             <AccordionContent className='bg-white p-2 text-primary flex flex-col gap-2 rounded-b-lg'>
                                                 {categories.map((category: any) => (
                                                     <div key={category} className="mb-2">
-                                                        <div className="text-black font-bold mb-1 px-2">{category}</div>
+                                                        <div className="text-black font-bold mb-1 px-2">{category} Section</div>
                                                         {products?.filter((p: any) => p.category === category).map((product: any) => (
                                                             <Link
                                                                 key={product._id}
@@ -244,7 +244,7 @@ const Navbar = () => {
                                         <ul className='grid gap-3 p-4 md:w-[700px] md:grid-cols-3 lg:w-[900px]'>
                                             {categories.map((category: any) => (
                                                 <li key={category}>
-                                                    <div className="text-sm font-bold mb-2 leading-none">{category}</div>
+                                                    <div className="text-sm font-bold mb-2 leading-none">{category} Section</div>
                                                     {products?.filter((p: any) => p.category === category).map((product: any) => (
                                                         <NavigationMenuLink asChild key={product._id}>
                                                             <Link

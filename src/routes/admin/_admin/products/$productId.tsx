@@ -240,7 +240,7 @@ function AdminProductDetail() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                     <Label htmlFor="id">Product ID/Code (Slug)</Label>
                     <Input 
                         id="id" 
@@ -249,7 +249,7 @@ function AdminProductDetail() {
                         disabled={!isNew}
                         placeholder="unique-product-slug / MACH67"
                     />
-                </div>
+                </div> */}
               </div>
 
               <div className="space-y-2">

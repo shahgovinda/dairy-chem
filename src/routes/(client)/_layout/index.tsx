@@ -359,7 +359,8 @@ function Home() {
         </div>
       </section> */}
 
-      <section className=''>
+      {blogs.length > 0 && (
+        <section className=''>
         <div className='container mx-auto px-4 lg:px-50 py-10 lg:py-20'>
           <div className='text-center mb-12 space-y-3'>
             <h1 className='text-2xl lg:text-4xl font-extrabold'>Our Latest News & Updates</h1>
@@ -403,6 +404,7 @@ function Home() {
 
         </div>
       </section>
+      )}
 
       <section>
         <div className='container mx-auto px-4 lg:px-50 py-10 lg:py-20 '>
