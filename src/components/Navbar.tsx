@@ -22,9 +22,14 @@ const Navbar = () => {
     const { products } = useProducts();
     const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false)
 
-    const categories = React.useMemo(() => {
-        return [...new Set(products?.map((product: any) => product.category))].filter(Boolean).slice(0, 6)
-    }, [products])
+    const categories = [
+        'Granulation',
+        'Ointment',
+        'Liquid',
+        'Capsule',
+        'Injectibles',
+        'API'
+    ]
 
     console.log(products);
 
@@ -99,7 +104,7 @@ const Navbar = () => {
                                         <X size={21} />
                                     </Button>
                                 </div>
-                                <nav className="flex flex-col gap-6 p-4">
+                                <nav className="flex flex-col gap-6 p-4 overflow-y-auto flex-1">
                                     {/* {navLinks.map((link) => (
                                         <Link
                                             key={link.name}
@@ -236,7 +241,7 @@ const Navbar = () => {
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                                     <NavigationMenuContent className='z-10'>
-                                        <ul className='grid gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
+                                        <ul className='grid gap-3 p-4 md:w-[700px] md:grid-cols-3 lg:w-[900px]'>
                                             {categories.map((category: any) => (
                                                 <li key={category}>
                                                     <div className="text-sm font-bold mb-2 leading-none">{category}</div>

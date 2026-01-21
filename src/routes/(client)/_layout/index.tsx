@@ -33,6 +33,7 @@ const images = [
   "/ui_images/slide1.jpeg",
   "/ui_images/slide2.jpeg",
   "/ui_images/slide3.jpeg",
+  "/ui_images/slide4.jpeg",
 ];
 
 const industryImages = [
@@ -53,50 +54,50 @@ const herolines = [
   "Precision. Purity. Performance.",
 ]
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Rajesh Kumar",
-    company: "Sun Pharma",
-    review: "Excellent machinery and top-notch service. The granulation line we purchased has significantly improved our production efficiency.",
-    rating: 5
-  },
-  {
-    id: 2,
-    name: "Anita Desai",
-    company: "Cipla Ltd.",
-    review: "Dairychem's liquid filling machines are precise and durable. Their support team is always ready to help with any queries.",
-    rating: 5
-  },
-  {
-    id: 3,
-    name: "Vikram Singh",
-    company: "Dr. Reddy's",
-    review: "We have been using their ointment manufacturing plant for over a year now. The quality is consistent and maintenance is minimal.",
-    rating: 4
-  },
-  {
-    id: 4,
-    name: "Suresh Patel",
-    company: "Zydus Cadila",
-    review: "Great experience working with the team. They understood our custom requirements for the capsule filling line and delivered exactly what we needed.",
-    rating: 5
-  },
-  {
-    id: 5,
-    name: "Meera Iyer",
-    company: "Torrent Pharma",
-    review: "Reliable equipment at competitive prices. The installation process was smooth and the training provided to our staff was very helpful.",
-    rating: 4
-  },
-  {
-    id: 6,
-    name: "Amit Shah",
-    company: "Lupin Limited",
-    review: "Highly recommend their injectable machinery. It meets all regulatory standards and performs flawlessly under high load.",
-    rating: 5
-  }
-]
+// const testimonials = [
+//   {
+//     id: 1,
+//     name: "Rajesh Kumar",
+//     company: "Sun Pharma",
+//     review: "Excellent machinery and top-notch service. The granulation line we purchased has significantly improved our production efficiency.",
+//     rating: 5
+//   },
+//   {
+//     id: 2,
+//     name: "Anita Desai",
+//     company: "Cipla Ltd.",
+//     review: "Dairychem's liquid filling machines are precise and durable. Their support team is always ready to help with any queries.",
+//     rating: 5
+//   },
+//   {
+//     id: 3,
+//     name: "Vikram Singh",
+//     company: "Dr. Reddy's",
+//     review: "We have been using their ointment manufacturing plant for over a year now. The quality is consistent and maintenance is minimal.",
+//     rating: 4
+//   },
+//   {
+//     id: 4,
+//     name: "Suresh Patel",
+//     company: "Zydus Cadila",
+//     review: "Great experience working with the team. They understood our custom requirements for the capsule filling line and delivered exactly what we needed.",
+//     rating: 5
+//   },
+//   {
+//     id: 5,
+//     name: "Meera Iyer",
+//     company: "Torrent Pharma",
+//     review: "Reliable equipment at competitive prices. The installation process was smooth and the training provided to our staff was very helpful.",
+//     rating: 4
+//   },
+//   {
+//     id: 6,
+//     name: "Amit Shah",
+//     company: "Lupin Limited",
+//     review: "Highly recommend their injectable machinery. It meets all regulatory standards and performs flawlessly under high load.",
+//     rating: 5
+//   }
+// ]
 
 function Home() {
 
@@ -120,7 +121,7 @@ function Home() {
     <main className=''>
       {/* hero section */}
       <section className={`relative `}>
-        <ImagesSlider className="h-[300px] md:h-[550px] lg:h-[700px]" images={images}>
+        <ImagesSlider className="h-[300px] md:h-[550px] lg:h-[900px]" images={images}>
           <motion.div
             initial={{
               opacity: 0,
@@ -207,7 +208,7 @@ function Home() {
                 className='w-full'>View All <ArrowRight className='' /></Button>
             </div>
             <div className='flex gap-3 items-center flex-col bg-pink-100 p-5 rounded-xl'>
-              <h3 className='text-xl font-bold'>Capsule Section</h3>
+              <h3 className='text-xl font-bold'>Tablet Section</h3>
               <img src="https://www.synovaticindia.in/images/tablet-section.png" alt="" />
               <Button onClick={() => navigate({ to: '/products', search: { filter: 'Capsule' } })}
                 className='w-full'>View All <ArrowRight className='' /></Button>

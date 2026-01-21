@@ -64,7 +64,7 @@ function Contact() {
   return (
     <main>
       <section className='relative flex-1 flex justify-center items-center  h-60 lg:h-90'>
-        <div className='absolute inset-0 bg-[url(https://www.cpduk.co.uk/sites/default/files/news-imported/cpd-benefits-digital-transformation-machinery-cambashi.jpg)] bg-cover bg-center brightness-35' />
+        <div className='absolute inset-0 bg-[url(/ui_images/about.jpeg)] bg-cover bg-center brightness-35' />
         <div className='relative flex items-center justify-center flex-col text-white'>
           <h1 className='font-extrabold lg:text-5xl text-2xl '>Contact Us</h1>
           <Breadcrumb className='mt-2 '>
@@ -104,7 +104,7 @@ function Contact() {
                     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
                     return (
                       <Field data-invalid={isInvalid}>
-                        <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                        <FieldLabel htmlFor={field.name}>Name<span className="text-red-500">*</span></FieldLabel>
                         <Input
                           id={field.name}
                           name={field.name}
@@ -126,7 +126,7 @@ function Contact() {
                     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
                     return (
                       <Field data-invalid={isInvalid}>
-                        <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                        <FieldLabel htmlFor={field.name}>Email<span className="text-red-500">*</span></FieldLabel>
                         <Input
                           id={field.name}
                           name={field.name}
@@ -151,7 +151,7 @@ function Contact() {
                     const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
                     return (
                       <Field data-invalid={isInvalid}>
-                        <FieldLabel htmlFor={field.name}>Phone Number</FieldLabel>
+                        <FieldLabel htmlFor={field.name}>Phone Number<span className="text-red-500">*</span></FieldLabel>
                         <Input
                           id={field.name}
                           name={field.name}
@@ -195,7 +195,7 @@ function Contact() {
                   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
                   return (
                     <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Requirement Details</FieldLabel>
+                      <FieldLabel htmlFor={field.name}>Requirement Details<span className="text-red-500">*</span></FieldLabel>
                       <InputGroup>
                         <InputGroupTextarea
                           id={field.name}
