@@ -23,9 +23,9 @@ const Navbar = () => {
     const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false)
 
     const categories = [
-        'Granulation',
+        'Granulation ',
         'Ointment',
-        'Liquid',
+        'Liquid Section',
         'Capsule',
         'Injectibles',
         'API'
