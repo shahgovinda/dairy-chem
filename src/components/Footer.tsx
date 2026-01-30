@@ -73,7 +73,7 @@ const Footer = () => {
                 <div className='w-full md:max-w-6xl mx-auto flex flex-col md:flex-row gap-y-3 items-center justify-between  py-5'>
                     <span className='space-x-2'>
                         <span>© 2026</span>
-                        <strong>DairyChem Pharma</strong>
+                        <strong>Govinda Shah</strong>
                         <span>All Rights Reserved.</span>
                     </span> 
                     <span className="space-x-1">
