@@ -64,12 +64,12 @@ const Navbar = () => {
                         <Link to={"/"} className='flex items-center gap-2'>
                             <span className=' flex flex-col items-center  border-primary p-1'>
                                 <img src={logo} className='size-12 md:size-16' alt="" />
-                                <p className='text-[10px] md:text-xs text-muted-foreground text-nowrap font-medium'>Since 2014</p>
+                                <p className='text-[10px] md:text-xs text-muted-foreground text-nowrap font-medium'>Since 2025</p>
                             </span>
                             <span>
-                                <h1 className='text-md md:text-2xl font-black text-primary'>DairyChem Pharma Machineries</h1>
+                                <h1 className='text-md md:text-2xl font-black text-primary'>GoTreats - Tiffin Services </h1>
                                 <span className='flex md:flex-row flex-col md:gap-2'>
-                                    <p className='text-[9px] font-semibold  md:text-sm'>Vasai East, Palghar, Maharashtra - 401208 </p>
+                                    <p className='text-[9px] font-semibold  md:text-sm'>Saibaba Nagar, Borivali West, Maharashtra - 400092 </p>
                                     {/* <p className='text-[9px] font-semibold md:text-xs'>|</p> */}
                                     <p className='text-[9px] flex gap-1 font-semibold md:text-sm'>GSTIN: <p className='font-bold'>{dairychem[0].GSTIN}</p></p>
                                 </span>
@@ -93,7 +93,7 @@ const Navbar = () => {
                                         <span className=' p-1'>
                                             <img src={logo} className='size-10 rounded-sm' alt="" />
                                         </span>
-                                        <h1 className='text-lg font-extrabold text-primary'>DairyChem Pharma Machineries</h1>
+                                        <h1 className='text-lg font-extrabold text-primary'>GoTreats - Tiffin Services</h1>
                                     </div>
                                     <Button
                                         size="icon"
